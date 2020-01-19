@@ -1,8 +1,8 @@
-package pl.com.example.bankappmicro.api.users;
+package pl.com.example.bankappmicro.api.user;
 
 import lombok.Builder;
 import lombok.Value;
-import pl.com.example.bankappmicro.domain.model.users.Gender;
+import pl.com.example.bankappmicro.domain.model.user.Gender;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;

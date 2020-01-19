@@ -1,4 +1,4 @@
-package pl.com.example.bankappmicro.api.users;
+package pl.com.example.bankappmicro.api.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import pl.com.example.bankappmicro.domain.model.users.User;
-import pl.com.example.bankappmicro.domain.users.UserBuilder;
-import pl.com.example.bankappmicro.domain.users.UserCreator;
-import pl.com.example.bankappmicro.domain.users.UserRetrieval;
+import pl.com.example.bankappmicro.domain.model.user.User;
+import pl.com.example.bankappmicro.domain.user.UserBuilder;
+import pl.com.example.bankappmicro.domain.user.UserCreator;
+import pl.com.example.bankappmicro.domain.user.UserRetrieval;
 
 import javax.validation.Valid;
 

@@ -1,4 +1,4 @@
-package pl.com.example.bankappmicro.domain.users;
+package pl.com.example.bankappmicro.domain.user;
 
 
 public interface UserCreator {

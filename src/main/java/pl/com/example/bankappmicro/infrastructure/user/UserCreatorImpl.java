@@ -3,8 +3,8 @@ package pl.com.example.bankappmicro.infrastructure.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.com.example.bankappmicro.domain.users.UserBuilder;
-import pl.com.example.bankappmicro.domain.users.UserCreator;
+import pl.com.example.bankappmicro.domain.user.UserBuilder;
+import pl.com.example.bankappmicro.domain.user.UserCreator;
 
 @Service
 @RequiredArgsConstructor

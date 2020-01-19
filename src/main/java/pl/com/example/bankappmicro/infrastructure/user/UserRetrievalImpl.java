@@ -2,8 +2,8 @@ package pl.com.example.bankappmicro.infrastructure.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.com.example.bankappmicro.domain.model.users.User;
-import pl.com.example.bankappmicro.domain.users.UserRetrieval;
+import pl.com.example.bankappmicro.domain.model.user.User;
+import pl.com.example.bankappmicro.domain.user.UserRetrieval;
 
 @Service
 @RequiredArgsConstructor
