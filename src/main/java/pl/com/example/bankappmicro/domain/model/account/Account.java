@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import pl.com.example.bankappmicro.domain.model.card.Card;
 import pl.com.example.bankappmicro.domain.model.user.User;
 
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -38,4 +40,7 @@ public class Account {
     private User user;
 
     private BigDecimal amount;
+
+    @OneToOne(mappedBy = "account")
+    private Card card;
 }
