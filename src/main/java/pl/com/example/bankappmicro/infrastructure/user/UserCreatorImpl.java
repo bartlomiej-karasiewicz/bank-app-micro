@@ -3,7 +3,7 @@ package pl.com.example.bankappmicro.infrastructure.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.com.example.bankappmicro.domain.user.UserBuilder;
+import pl.com.example.bankappmicro.domain.user.UserCommand;
 import pl.com.example.bankappmicro.domain.user.UserCreator;
 
 @Service
@@ -14,8 +14,8 @@ class UserCreatorImpl implements UserCreator {
 
     @Override
     @Transactional
-    public void addUser(UserBuilder userBuilder) {
-        userRepository.save(userBuilder.generateUser());
+    public void addUser(UserCommand userCommand) {
+        userRepository.save(userCommand.generateUser());
     }
 
 }

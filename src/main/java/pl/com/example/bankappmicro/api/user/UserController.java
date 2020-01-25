@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import pl.com.example.bankappmicro.domain.model.user.User;
-import pl.com.example.bankappmicro.domain.user.UserBuilder;
+import pl.com.example.bankappmicro.domain.user.UserCommand;
 import pl.com.example.bankappmicro.domain.user.UserCreator;
 import pl.com.example.bankappmicro.domain.user.UserRetrieval;
 
@@ -27,11 +27,11 @@ public class UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@Valid @RequestBody UserDTO userDTO){
-        UserBuilder userBuilder=UserBuilder.builder()
+        UserCommand userCommand = UserCommand.builder()
                 .login(userDTO.getLogin())
                 .gender(userDTO.getGender())
                 .build();
-        userCreator.addUser(userBuilder);
+        userCreator.addUser(userCommand);
     }
 
     @GetMapping

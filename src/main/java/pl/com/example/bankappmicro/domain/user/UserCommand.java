@@ -7,7 +7,7 @@ import pl.com.example.bankappmicro.domain.model.user.User;
 
 @Builder
 @Getter
-public class UserBuilder {
+public class UserCommand {
 
     private String login;
     private Gender gender;

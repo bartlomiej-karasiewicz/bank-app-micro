@@ -38,7 +38,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     Set<Account> accounts=new HashSet<>();
 
     public void addAccount(Account account) {

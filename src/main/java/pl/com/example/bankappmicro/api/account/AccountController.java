@@ -26,15 +26,24 @@ public class AccountController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createAccount(@RequestParam (name = "userId") Long userId){
+    public void createAccount(@RequestParam(name = "userId") Long userId) {
         accountCreator.addAccount(userId);
     }
 
     @GetMapping(path = "/{accountId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public AccountDTO findAccountById (@PathVariable Long accountId){
-        Account account=accountRetrieval.findById(accountId);
-        log.info(account.getAccountNumber() + " " + account.getAmount());
+    public AccountDTO findAccountById(@PathVariable Long accountId) {
+        Account account = accountRetrieval.findById(accountId);
+        log.info("Found account " + account.getAccountNumber() + "= " + account.getAmount() + "= ");
         return AccountMapper.mapToDTO(account);
+    }
+
+    static class AccountMapper {
+        static AccountDTO mapToDTO(Account account) {
+            return AccountDTO.builder()
+                    .accountNumber(account.getAccountNumber())
+                    .balance(account.getAmount())
+                    .build();
+        }
     }
 }
