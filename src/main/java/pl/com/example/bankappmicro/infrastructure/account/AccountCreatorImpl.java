@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.com.example.bankappmicro.domain.account.AccountCreator;
 import pl.com.example.bankappmicro.domain.account.AccountGenerator;
+import pl.com.example.bankappmicro.domain.exception.UserNotFoundException;
 import pl.com.example.bankappmicro.domain.model.user.User;
 import pl.com.example.bankappmicro.infrastructure.user.UserRepository;
 
@@ -21,7 +22,7 @@ public class AccountCreatorImpl implements AccountCreator {
     @Transactional
     public void addAccount(Long userId) {
         User user=userRepository.findById(userId)
-                .orElseThrow(()->new IllegalArgumentException());
+                .orElseThrow(()->new UserNotFoundException("User not exist with this id."));
         log.info("Found user:" + user);
         user.addAccount(accountGenerator.generateAccount(user));
     }
