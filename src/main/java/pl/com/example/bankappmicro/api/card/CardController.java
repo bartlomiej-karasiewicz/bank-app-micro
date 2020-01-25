@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.com.example.bankappmicro.domain.card.CardCommand;
 import pl.com.example.bankappmicro.infrastructure.card.CardFacade;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("v1/cards")
 @RequiredArgsConstructor
@@ -22,7 +24,10 @@ public class CardController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/{accountId}/card")
     public void createCard(@PathVariable Long accountId,
-                           @RequestBody CardCommand cardCommand){
+                           @Valid @RequestBody CardDTO cardDTO){
+        CardCommand cardCommand=CardCommand.builder()
+                .lastFourNumbers(cardDTO.getLastFourNumbers())
+                .build();
         cardFacade.insertCard(accountId, cardCommand);
     }
 
