@@ -19,6 +19,4 @@ class CardCreatorImpl implements CardCreator {
         Account account=accountRepository.getOne(accountId);
         cardRepository.save(cardCommand.insertCard(account));
     }
-
-
 }

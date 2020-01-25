@@ -34,4 +34,7 @@ public class Card {
     @OneToOne
     private Account account;
 
+    public void restrict() {
+        this.status = Status.RESTRICTED;
+    }
 }
