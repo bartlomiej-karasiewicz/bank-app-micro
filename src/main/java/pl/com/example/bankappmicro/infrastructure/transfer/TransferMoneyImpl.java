@@ -26,13 +26,21 @@ public class TransferMoneyImpl implements TransferMoney {
 
         BigDecimal addAmounts = addAmounts(amount, toAccount);
 
+        changeSaldoInAccountBuyer(fromAccount, subtractAmounts);
+
+        changeSaldoInAccountSeller(toAccount, addAmounts);
+    }
+
+    private void changeSaldoInAccountBuyer(Account fromAccount, BigDecimal subtractAmounts) {
         accountRepository.save(Account.builder()
                 .accountNumber(fromAccount.getAccountNumber())
                 .user(fromAccount.getUser())
                 .amount(subtractAmounts)
                 .id(fromAccount.getId())
                 .build());
+    }
 
+    private void changeSaldoInAccountSeller(Account toAccount, BigDecimal addAmounts) {
         accountRepository.save(Account.builder()
                 .accountNumber(toAccount.getAccountNumber())
                 .user(toAccount.getUser())
