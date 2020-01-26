@@ -2,6 +2,7 @@ package pl.com.example.bankappmicro.infrastructure.transfer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.com.example.bankappmicro.domain.exception.AccountNotFoundException;
 import pl.com.example.bankappmicro.domain.model.account.Account;
 import pl.com.example.bankappmicro.domain.transfer.TransferMoney;
 import pl.com.example.bankappmicro.infrastructure.account.AccountRepository;
@@ -16,16 +17,14 @@ public class TransferMoneyImpl implements TransferMoney {
 
     @Override
     public void transferMoney(Long fromAccountId, Long toAccountId, BigDecimal amount) {
-        Account fromAccount = accountRepository.findById(fromAccountId).get();
-        Account toAccount = accountRepository.findById(toAccountId).get();
+        Account fromAccount = accountRepository.findById(fromAccountId)
+                .orElseThrow(() -> new AccountNotFoundException("Not found account."));
+        Account toAccount = accountRepository.findById(toAccountId)
+                .orElseThrow(() -> new AccountNotFoundException("Not found account."));
 
-        BigDecimal subtractAmounts = fromAccount
-                .getAmount()
-                .subtract(amount);
+        BigDecimal subtractAmounts = subtractAmounts(amount, fromAccount);
 
-        BigDecimal addAmounts = toAccount
-                .getAmount()
-                .add(amount);
+        BigDecimal addAmounts = addAmounts(amount, toAccount);
 
         accountRepository.save(Account.builder()
                 .accountNumber(fromAccount.getAccountNumber())
@@ -40,5 +39,17 @@ public class TransferMoneyImpl implements TransferMoney {
                 .amount(addAmounts)
                 .id(toAccount.getId())
                 .build());
+    }
+
+    private BigDecimal addAmounts(BigDecimal amount, Account toAccount) {
+        return toAccount
+                    .getAmount()
+                    .add(amount);
+    }
+
+    private BigDecimal subtractAmounts(BigDecimal amount, Account fromAccount) {
+        return fromAccount
+                    .getAmount()
+                    .subtract(amount);
     }
 }
