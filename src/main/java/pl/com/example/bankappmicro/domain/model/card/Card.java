@@ -33,7 +33,7 @@ public class Card {
     private Long cardId;
 
     @Length(min = 4, max = 4)
-    private String lastFourNumber;
+    private String lastFourNumbers;
 
     @Enumerated(EnumType.STRING)
     private Status status;
