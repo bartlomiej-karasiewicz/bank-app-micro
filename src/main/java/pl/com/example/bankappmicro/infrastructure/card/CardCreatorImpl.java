@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.com.example.bankappmicro.domain.card.CardCommand;
 import pl.com.example.bankappmicro.domain.card.CardCreator;
 import pl.com.example.bankappmicro.domain.model.account.Account;
+import pl.com.example.bankappmicro.domain.model.card.Card;
 import pl.com.example.bankappmicro.infrastructure.account.AccountRepository;
 
 @Service
@@ -17,6 +18,6 @@ class CardCreatorImpl implements CardCreator {
     @Override
     public void insertCard(Long accountId, CardCommand cardCommand) {
         Account account=accountRepository.getOne(accountId);
-        cardRepository.save(cardCommand.insertCard(account));
+        account.setCard(new Card());
     }
 }

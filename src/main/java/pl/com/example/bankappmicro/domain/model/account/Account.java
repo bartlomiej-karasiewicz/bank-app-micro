@@ -43,4 +43,9 @@ public class Account {
 
     @OneToOne(mappedBy = "account")
     private Card card;
+
+    public void setCard(Card card){
+        card.setAccount(this);
+        this.card=card;
+    }
 }
