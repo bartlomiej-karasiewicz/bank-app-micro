@@ -2,8 +2,10 @@ package pl.com.example.bankappmicro.domain.transfer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.com.example.bankappmicro.api.transfer.TransferDTO;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,5 +17,7 @@ public class TransferFacade {
         transferMoney.create(fromAccountNumber,toAccountNumber, amount);
     }
 
-
+    public void createTransfers(List<TransferDTO> transferDTOList) {
+        transferMoney.createTransactions(transferDTOList);
+    }
 }
