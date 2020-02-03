@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Builder
@@ -24,5 +26,7 @@ public class Transfer {
     private Long transferId;
     private Long fromAccountId;
     private Long toAccountId;
-    private BigDecimal pay;
+    private BigDecimal amount;
+
+
 }

@@ -3,7 +3,6 @@ package pl.com.example.bankappmicro.api.account;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +33,7 @@ public class AccountController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public AccountDTO findAccountById(@PathVariable Long accountId) {
         Account account = accountRetrieval.findById(accountId);
-        log.info("Found account " + account.getAccountNumber() + "= " + account.getAmount() + "= ");
+        log.info("Found account " + account.getAccountNumber() + "= " + account.getAccountBalance() + "= ");
         return AccountMapper.mapToDTO(account);
     }
 
@@ -42,7 +41,7 @@ public class AccountController {
         static AccountDTO mapToDTO(Account account) {
             return AccountDTO.builder()
                     .accountNumber(account.getAccountNumber())
-                    .balance(account.getAmount())
+                    .balance(account.getAccountBalance())
                     .build();
         }
     }

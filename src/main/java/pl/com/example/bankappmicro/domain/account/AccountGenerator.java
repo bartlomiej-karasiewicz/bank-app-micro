@@ -15,7 +15,7 @@ public class AccountGenerator {
     public Account generateAccount(User user){
         return Account.builder()
                 .accountNumber(AccountGenerator.generateAccountNumber())
-                .amount(BigDecimal.ZERO)
+                .accountBalance(BigDecimal.ZERO)
                 .user(user)
                 .build();
     }

@@ -37,5 +37,15 @@ public class Account {
     @ManyToOne @JoinColumn(name = "user_id")
     private User user;
 
-    private BigDecimal amount;
+    private BigDecimal accountBalance;
+
+    public void sendMoney(BigDecimal amount) {
+        if (this.accountBalance.compareTo(amount) > 0) {
+            setAccountBalance(this.accountBalance.subtract(amount));
+        }
+    }
+
+    public void receiveMoney (BigDecimal amount){
+        setAccountBalance(this.accountBalance.add(amount));
+    }
 }
