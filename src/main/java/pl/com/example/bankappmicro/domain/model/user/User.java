@@ -39,7 +39,7 @@ public class User {
     private Gender gender;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    Set<Account> accounts=new HashSet<>();
+    private Set<Account> accounts=new HashSet<>();
 
     public void addAccount(Account account) {
         accounts.add(account);
