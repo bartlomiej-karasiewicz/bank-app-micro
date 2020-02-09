@@ -26,7 +26,7 @@ public class TransferMoneyImpl implements TransferMoney {
 
     @Transactional
     @Override
-    public void create(Long fromAccountId, Long toAccountId, BigDecimal amount) {
+    public void createTransfer(Long fromAccountId, Long toAccountId, BigDecimal amount) {
         Account fromAccount = accountRepository.findById(fromAccountId)
                 .orElseThrow(() -> new AccountNotFoundException("Not found account " + fromAccountId));
         Account toAccount = accountRepository.findById(toAccountId)
@@ -42,7 +42,7 @@ public class TransferMoneyImpl implements TransferMoney {
 
     @Override
     @Transactional
-    public void createTransactions(List<TransferDTO> transferDTOList) {
+    public void createMultiTransfers(List<TransferDTO> transferDTOList) {
         List<Transfer> listOfTransfer = new ArrayList<>();
         Account fromAccount;
         Account toAccount;

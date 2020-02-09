@@ -1,16 +1,14 @@
-package pl.com.example.bankappmicro.infrastructure.card;
+package pl.com.example.bankappmicro.domain.card;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.com.example.bankappmicro.domain.card.CardCommand;
-import pl.com.example.bankappmicro.domain.model.card.Card;
 
 @Component
 @RequiredArgsConstructor
 public class CardFacade {
 
-    private final CardCreatorImpl cardCreatorFacade;
-    private final RestrictCardImpl restrictCardFacade;
+    private final CardCreator cardCreatorFacade;
+    private final RestrictCard restrictCardFacade;
 
     public void insertCard(Long accountId, String lastFourNumbers) {
         cardCreatorFacade.insertCard(accountId,lastFourNumbers);

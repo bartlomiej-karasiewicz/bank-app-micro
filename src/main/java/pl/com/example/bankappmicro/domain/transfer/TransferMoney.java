@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface TransferMoney {
 
-    void create(Long fromAccountId, Long toAccountId, BigDecimal amount);
-    void createTransactions(List<TransferDTO> transferDTOList);
+    void createTransfer(Long fromAccountId, Long toAccountId, BigDecimal amount);
+    void createMultiTransfers(List<TransferDTO> transferDTOList);
 }

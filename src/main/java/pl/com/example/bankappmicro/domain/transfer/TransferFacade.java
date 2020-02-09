@@ -14,10 +14,10 @@ public class TransferFacade {
     private final TransferMoney transferMoney;
 
     public void createTransfer(Long fromAccountNumber, Long toAccountNumber, BigDecimal amount) {
-        transferMoney.create(fromAccountNumber,toAccountNumber, amount);
+        transferMoney.createTransfer(fromAccountNumber,toAccountNumber, amount);
     }
 
     public void createTransfers(List<TransferDTO> transferDTOList) {
-        transferMoney.createTransactions(transferDTOList);
+        transferMoney.createMultiTransfers(transferDTOList);
     }
 }

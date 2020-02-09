@@ -11,7 +11,7 @@ import pl.com.example.bankappmicro.infrastructure.account.AccountRepository;
 
 @Service
 @RequiredArgsConstructor
-class CardCreatorImpl implements CardCreator {
+public class CardCreatorImpl implements CardCreator {
 
     private final AccountRepository accountRepository;
     private final CardRepository cardRepository;
