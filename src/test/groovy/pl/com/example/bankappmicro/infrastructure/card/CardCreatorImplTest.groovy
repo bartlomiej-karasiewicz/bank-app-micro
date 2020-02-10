@@ -18,9 +18,6 @@ class CardCreatorImplTest extends Specification {
     def "Should create card in database and assign to account"(){
         given:
         Account account=createAccount
-        Card card
-        Long accountId=0
-        String lastFourNumbers="1234"
         when:
         accountRetrieval.findById(1) >> account
         then:
