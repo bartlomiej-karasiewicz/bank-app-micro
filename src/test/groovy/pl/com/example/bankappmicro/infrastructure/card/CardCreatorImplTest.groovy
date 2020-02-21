@@ -13,7 +13,7 @@ class CardCreatorImplTest extends Specification {
     AccountRepository accountRepository=Mock(AccountRepository)
     CardRepository cardRepository=Mock(CardRepository)
     AccountRetrieval accountRetrieval=new AccountRetrievalImpl(accountRepository)
-    CardCreator addCard=new CardCreatorImpl(cardRepository, accountRepository)
+    CardCreator addCard=new CardCreatorImpl(cardRepository as AccountRepository, accountRepository as CardRepository)
 
     def "Should create card in database and assign to account"(){
         given:
@@ -21,7 +21,7 @@ class CardCreatorImplTest extends Specification {
         when:
         accountRetrieval.findById(1) >> account
         then:
-        println account
+        account.getAccountNumber()=="123456"
 
     }
 

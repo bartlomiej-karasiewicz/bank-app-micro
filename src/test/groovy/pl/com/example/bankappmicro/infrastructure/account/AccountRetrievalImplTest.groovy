@@ -1,6 +1,7 @@
 package pl.com.example.bankappmicro.infrastructure.account
 
 import pl.com.example.bankappmicro.domain.account.AccountRetrieval
+import pl.com.example.bankappmicro.domain.exception.AccountNotFoundException
 import pl.com.example.bankappmicro.domain.model.account.Account
 import spock.lang.Specification
 
@@ -15,12 +16,11 @@ class AccountRetrievalImplTest extends Specification {
         when:
         accountRetrieval.findById(1) >> account
         then:
-        account.getAccountNumber()=="123456"
-        println account
+        account.getId()==1
     }
 
-
     Account createAccount=Account.builder()
+        .id(1)
         .accountNumber("123456")
         .build()
 }
