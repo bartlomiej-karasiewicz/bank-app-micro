@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import pl.com.example.bankappmicro.domain.model.user.User;
 import pl.com.example.bankappmicro.domain.user.UserCommand;
-import pl.com.example.bankappmicro.domain.user.UserCreator;
-import pl.com.example.bankappmicro.domain.user.UserRetrieval;
+import pl.com.example.bankappmicro.domain.user.UserFacade;
 
 import javax.validation.Valid;
 
@@ -21,8 +20,7 @@ import javax.validation.Valid;
 @RequestMapping("v1/users")
 public class UserController {
 
-    private final UserCreator userCreator;
-    private final UserRetrieval userRetrieval;
+    private final UserFacade userFacade;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,12 +29,12 @@ public class UserController {
                 .login(userDTO.getLogin())
                 .gender(userDTO.getGender())
                 .build();
-        userCreator.addUser(userCommand);
+        userFacade.addUser(userCommand);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public User findUserById(@RequestParam (name = "userId") long userId){
-        return userRetrieval.findUserById(userId);
+        return userFacade.findUserById(userId);
     }
 }

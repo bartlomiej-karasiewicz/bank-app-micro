@@ -8,6 +8,7 @@ import pl.com.example.bankappmicro.domain.user.UserCreator;
 
 @Service
 @RequiredArgsConstructor
+public
 class UserCreatorImpl implements UserCreator {
 
     private final UserRepository userRepository;

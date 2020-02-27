@@ -14,6 +14,6 @@ public class UserRetrievalImpl implements UserRetrieval {
 
     @Override
     public User findUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not exist with this id."));
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not exist with this id " + id));
     }
 }
